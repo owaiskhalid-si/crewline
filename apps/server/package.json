@@ -1,0 +1,18 @@
+{
+  "name": "@crewline/server",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@crewline/core": "*",
+    "tsx": "^4.23.15",
+    "ws": "^8.22.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/ws": "^8"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "Crewline",
+    "slug": "crewline",
+    "scheme": "crewline",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "backgroundColor": "#0E1412",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "dev.owaiskhalid.crewline",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Crewline shares your location with your dispatcher only while you're clocked in, and marks your arrival at jobs."
+      }
+    },
+    "android": {
+      "package": "dev.owaiskhalid.crewline",
+      "adaptiveIcon": {
+        "backgroundColor": "#0E1412",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 160,
+          "backgroundColor": "#0E1412"
+        }
+      ],
+      "expo-status-bar"
+    ]
+  }
+}

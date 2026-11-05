@@ -1,0 +1,24 @@
+{
+  "name": "crewline",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Run a field crew like a transit line: live dispatch board, customer tracking link and an Expo field app.",
+  "license": "MIT",
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "dev": "npm run dev -w @crewline/web",
+    "server": "npm run start -w @crewline/server",
+    "mobile": "npm run start -w @crewline/mobile",
+    "test": "vitest run",
+    "lint": "npm run lint -w @crewline/web && npm run lint -w @crewline/mobile",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "build": "npm run build -w @crewline/web"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "playwright-core": "^1.64.1",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.3",
+    "vitest": "^5.1.0"
+  }
+}

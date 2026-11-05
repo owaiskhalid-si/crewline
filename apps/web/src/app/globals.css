@@ -1,0 +1,137 @@
+@import "tailwindcss";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Station signage: enamel white, black ink, and colour reserved for the lines themselves. */
+:root {
+  --page: #eef1f0;
+  --panel: #fbfcfb;
+  --sunk: #e3e7e5;
+  --ink: #0e1412;
+  --ink-2: #47524e;
+  --ink-3: #6b7773;
+  --hair: rgb(14 20 18 / 0.14);
+  --late: #cf2317;
+  --tight: #9a6500;
+  --good: #0b7a48;
+  --cta: #0e1412;
+  --on-cta: #fbfcfb;
+  --station: #fbfcfb;
+  color-scheme: light;
+}
+
+.dark {
+  --page: #0d1211;
+  --panel: #151b19;
+  --sunk: #222a27;
+  --ink: #edf1ef;
+  --ink-2: #b4bfbb;
+  --ink-3: #8d9994;
+  --hair: rgb(237 241 239 / 0.15);
+  --late: #ff6d60;
+  --tight: #f0b33c;
+  --good: #4cd593;
+  --cta: #edf1ef;
+  --on-cta: #0d1211;
+  --station: #151b19;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-panel: var(--panel);
+  --color-sunk: var(--sunk);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-hair: var(--hair);
+  --color-late: var(--late);
+  --color-tight: var(--tight);
+  --color-good: var(--good);
+  --color-cta: var(--cta);
+  --color-on-cta: var(--on-cta);
+  --font-sans: "Overpass Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "tnum" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+  button,
+  a,
+  input[type="range"] {
+    outline-offset: 2px;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ink);
+  }
+}
+
+/* In a layer, so a colour utility on an element can override the default white. */
+@layer components {
+  .bullet {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    color: #fff;
+    font-weight: 800;
+    line-height: 1;
+    /* Overpass sits a touch high in its box. */
+    padding-top: 0.12em;
+    flex: none;
+  }
+}
+
+/* The technician markers on the map. */
+.tech-marker {
+  width: 28px;
+  height: 28px;
+  border: 2.5px solid #fff;
+  font-size: 14px;
+  box-shadow: 0 1px 6px rgb(0 0 0 / 0.35);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.dark .tech-marker {
+  border-color: #0d1211;
+}
+.tech-marker[data-dim="true"] {
+  opacity: 0.32;
+}
+.tech-marker[data-stale="true"] {
+  background-image: repeating-linear-gradient(45deg, transparent 0 4px, rgb(255 255 255 / 0.35) 4px 8px);
+}
+
+.maplibregl-ctrl-attrib {
+  font-family: var(--font-sans);
+  font-size: 11px;
+}
+
+/* The time scrubber: a real range input, so it works with a keyboard, drawn as the "now" needle. */
+.scrub {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: ew-resize;
+  margin: 0;
+}
+.scrub::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 22px;
+  background: transparent;
+}
+.scrub::-moz-range-thumb {
+  width: 18px;
+  height: 22px;
+  border: 0;
+  background: transparent;
+}
